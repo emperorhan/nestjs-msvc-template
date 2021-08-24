@@ -1,0 +1,4 @@
+types.d.ts
+**/*.js
+node_modules/
+generated/

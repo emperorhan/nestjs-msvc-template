@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "esModuleInterop": true,
+        "target": "ES2020",
+        "sourceMap": true,
+        "incremental": true,
+        "outDir": "./dist",
+        "baseUrl": ".",
+        "paths": {
+            "@auth/application/*": [
+                "packages/authentication/src/application/*"
+            ],
+            "@auth/config": ["packages/authentication/src/config"],
+            "@auth/domain/*": ["packages/authentication/src/domain/*"],
+            "@auth/infrastructure/*": [
+                "packages/authentication/src/infrastructure/*"
+            ],
+            "@auth/interface/*": ["packages/authentication/src/interface/*"]
+        }
+    },
+    "exclude": ["node_modules"]
+}
