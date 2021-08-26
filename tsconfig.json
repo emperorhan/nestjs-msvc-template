@@ -13,20 +13,7 @@
         "esModuleInterop": true,
         "target": "ES2020",
         "sourceMap": true,
-        "incremental": true,
-        "outDir": "./dist",
-        "baseUrl": ".",
-        "paths": {
-            "@auth/application/*": [
-                "packages/authentication/src/application/*"
-            ],
-            "@auth/config": ["packages/authentication/src/config"],
-            "@auth/domain/*": ["packages/authentication/src/domain/*"],
-            "@auth/infrastructure/*": [
-                "packages/authentication/src/infrastructure/*"
-            ],
-            "@auth/interface/*": ["packages/authentication/src/interface/*"]
-        }
+        "incremental": true
     },
     "exclude": ["node_modules"]
 }

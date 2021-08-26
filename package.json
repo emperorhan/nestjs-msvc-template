@@ -1,18 +1,27 @@
 {
     "name": "root",
     "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
+    "workspaces": {
+        "packages": [
+            "packages/*"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
     "scripts": {
+        "build": "lerna run build",
         "test": "lerna run test",
+        "lint": "eslint \"{src,apps,libs,test,packages}/**/*.ts\" --fix",
         "release": "standard-version",
         "release:major": "standard-version -- --release-as major",
         "release:minor": "standard-version -- --release-as minor",
         "release:patch": "standard-version -- --release-as patch",
         "release:version": "standard-version -- --release-as",
         "prepare": "husky install",
-        "pre-commit": "yarn build && yarn lint-staged",
+        "pre-commit": "yarn build && yarn lint-staged --no-stash",
         "prepare-commit-msg": "devmoji -e",
         "commit-msg": "npx --no-install commitlint --edit",
         "pre-push": "yarn test",
@@ -51,21 +60,5 @@
         "ts-node": "^10.2.1",
         "tsconfig-paths": "^3.10.1",
         "typescript": "^4.3.5"
-    },
-    "dependencies": {
-        "@nestjs/common": "^8.0.6",
-        "@nestjs/core": "^8.0.6",
-        "@nestjs/mapped-types": "^1.0.0",
-        "@nestjs/platform-fastify": "^8.0.6",
-        "@nestjs/swagger": "^5.0.9",
-        "@nestjs/typeorm": "^8.0.2",
-        "class-transformer": "^0.4.0",
-        "class-validator": "^0.13.1",
-        "cls-rtracer": "^2.6.0",
-        "fastify-helmet": "^5.3.2",
-        "nestjs-pino": "^1.4.0",
-        "reflect-metadata": "^0.1.13",
-        "rimraf": "^3.0.2",
-        "rxjs": "^7.3.0"
     }
 }

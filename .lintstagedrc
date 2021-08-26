@@ -1,6 +1,5 @@
 {
-    "src/**/!(*.queries).ts": [
-        "yarn lint --fix",
-        "git add"
+    "*.{ts,tsx,js,jsx}": [
+        "eslint \"{src,apps,libs,test,packages}/**/*.ts\" --fix"
     ]
 }

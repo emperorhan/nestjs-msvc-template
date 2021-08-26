@@ -1,0 +1,14 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "src",
+        "paths": {
+            "@application/*": ["application/*"],
+            "@config": ["config"],
+            "@domain/*": ["domain/*"],
+            "@infrastructure/*": ["infrastructure/*"],
+            "@interface/*": ["interface/*"]
+        }
+    },
+    "exclude": ["node_modules", "dist"]
+}

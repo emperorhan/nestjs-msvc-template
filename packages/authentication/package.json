@@ -1,0 +1,56 @@
+{
+    "name": "authentication",
+    "version": "1.0.0",
+    "description": "> TODO: description",
+    "author": "emperorhan <iny27@naver.com>",
+    "license": "ISC",
+    "directories": {
+        "lib": "src",
+        "test": "__tests__"
+    },
+    "files": [
+        "src"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/emperorhan/nestjs-msvc-template.git"
+    },
+    "scripts": {
+        "prebuild": "rimraf dist && rimraf tsconfig.build.tsbuildinfo",
+        "build": "nest build",
+        "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+        "start": "nest start",
+        "start:dev": "nest start --watch",
+        "start:debug": "nest start --debug --watch",
+        "start:prod": "node dist/main",
+        "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+        "test": "jest --clearCache && jest",
+        "test:watch": "jest --watch",
+        "test:cov": "jest --coverage",
+        "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+        "test:e2e": "jest --config ./test/jest-e2e.json"
+    },
+    "bugs": {
+        "url": "https://github.com/emperorhan/nestjs-msvc-template/issues"
+    },
+    "dependencies": {
+        "@nestjs/cqrs": "^8.0.0",
+        "typeorm": "^0.2.37",
+        "@nestjs/common": "^8.0.6",
+        "@nestjs/core": "^8.0.6",
+        "@nestjs/mapped-types": "^1.0.0",
+        "@nestjs/platform-fastify": "^8.0.6",
+        "@nestjs/swagger": "^5.0.9",
+        "class-transformer": "^0.4.0",
+        "class-validator": "^0.13.1",
+        "cls-rtracer": "^2.6.0",
+        "dotenv": "^10.0.0",
+        "fastify": "^3.20.2",
+        "fastify-helmet": "^5.3.2",
+        "fastify-swagger": "^4.9.0",
+        "nestjs-pino": "^1.4.0",
+        "reflect-metadata": "^0.1.13",
+        "rimraf": "^3.0.2",
+        "rxjs": "^7.3.0"
+    }
+}
