@@ -3,10 +3,21 @@ import {
     OnModuleInit,
     INestApplication,
 } from "@nestjs/common";
+import { NestFastifyApplication } from "@nestjs/platform-fastify";
+import { fastifyHelmet } from "fastify-helmet";
+import rTracer from "cls-rtracer";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 import { config } from "@config";
 // import { Connection, createConnection } from "typeorm";
+
+import {
+    initializeTransactionalContext,
+    patchTypeORMRepositoryWithBaseRepository,
+} from "typeorm-transactional-cls-hooked";
+
+initializeTransactionalContext();
+patchTypeORMRepositoryWithBaseRepository();
 
 // import { AccountEntity } from "@infrastructure/models/entities/";
 
@@ -53,6 +64,30 @@ export class AppService implements OnModuleInit, OnModuleDestroy {
 
         const document = SwaggerModule.createDocument(app, documentBuilder);
         SwaggerModule.setup("api", app, document);
+    }
+
+    static setupMiddleware(app: NestFastifyApplication): void {
+        app.register(rTracer.fastifyPlugin);
+
+        // added security
+        app.register(fastifyHelmet, {
+            contentSecurityPolicy: {
+                directives: {
+                    defaultSrc: [`'self'`],
+                    styleSrc: [
+                        `'self'`,
+                        `'unsafe-inline'`,
+                        "validator.swagger.io",
+                    ],
+                    imgSrc: [`'self'`, "data:", "validator.swagger.io"],
+                    scriptSrc: [
+                        `'self'`,
+                        `https: 'unsafe-inline'`,
+                        "validator.swagger.io",
+                    ],
+                },
+            },
+        });
     }
 
     // static redisClusterConfig(): RedisClusterConfig {
